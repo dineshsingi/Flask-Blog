@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<style>
+    body{
+        background-color: antiquewhite;
+    }
+    .footer{
+        position: fixed;
+    }
+    .create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+    .form-group{
+        padding: 3px;
+        color: #0f5132;
+        font-family: 'Bookman Old Style';
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 offset-lg-1">
+
+            <form class="create-form" action="" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-3"> {{ legend }} </legend>
+                    <div class="form-group">
+<!--                email-->
+                        {{ form.title.label(class="form-control-label") }}
+                        {% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-sm is-invalid") }}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                            <span> {{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.title(class="form-control form-control-sm") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+<!--                content-->
+                        {{ form.content.label(class="form-control-label") }}
+                        {% if form.content.errors %}
+                        {{ form.content(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.content.errors %}
+                            <span> {{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.content(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <!--submit btn-->
+                    <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

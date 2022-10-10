@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<style>
+    body{
+        background-color: papayawhip;
+    }
+    .content{
+        max-width: 320px;
+        text-align: center;
+        padding: 15px;
+    }
+    .form-group{
+        padding: 3px;
+    }
+</style>
+
+
+<br>
+<div class="content m-auto">
+
+    <form action="" method="POST">
+
+<!--        hidden tag add csrf token-->
+        {{ form.hidden_tag() }}
+
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-3 shadow"> Reset Password </legend>
+
+            <div class="form-group">
+<!--                email-->
+                {{ form.email.label(class="form-control-label") }}
+
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span> {{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control form-control-sm") }}
+                {% endif %}
+
+            </div>
+
+        </fieldset>
+
+        <div class="form-group">
+<!--            submit -->
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+
+    </form>
+    &nbsp;
+
+</div>
+<br>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

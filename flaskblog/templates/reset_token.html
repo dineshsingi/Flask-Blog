@@ -4,7 +4,7 @@
 
 <style>
     body{
-        background-color: rgba(236,255,204,0.98);
+        background-color: papayawhip;
     }
     .content{
         max-width: 320px;
@@ -26,41 +26,10 @@
         {{ form.hidden_tag() }}
 
         <fieldset class="form-group">
-            <legend class="border-bottom mb-3 shadow"> Get Registered </legend>
+            <legend class="border-bottom mb-3 shadow"> Reset Password </legend>
+
             <div class="form-group">
-<!--                username-->
-                {{ form.username.label(class="form-control-label") }}
-
-                {% if form.username.errors %}
-                    {{ form.username(class="form-control form-control-sm is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.username.errors %}
-                    <span> {{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.username(class="form-control form-control-sm") }}
-                {% endif %}
-
-            </div>
-            <div class="form-group">
-<!--                email-->
-                {{ form.email.label(class="form-control-label") }}
-
-                {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-sm is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.email.errors %}
-                    <span> {{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.email(class="form-control form-control-sm") }}
-                {% endif %}
-
-            </div>
-            <div class="form-group">
-<!--                password-->
+<!--               password-->
                 {{ form.password.label(class="form-control-label") }}
 
                 {% if form.password.errors %}
@@ -73,9 +42,10 @@
                 {% else %}
                 {{ form.password(class="form-control form-control-sm") }}
                 {% endif %}
+
             </div>
             <div class="form-group">
-<!--                confirm password-->
+<!--                confirm passsword-->
                 {{ form.confirm_password.label(class="form-control-label") }}
 
                 {% if form.confirm_password.errors %}
@@ -88,8 +58,10 @@
                 {% else %}
                 {{ form.confirm_password(class="form-control form-control-sm") }}
                 {% endif %}
+
             </div>
-        </fieldset> &nbsp;
+
+        </fieldset>
 
         <div class="form-group">
 <!--            submit -->
@@ -97,35 +69,9 @@
         </div>
 
     </form>
-    </div>
     &nbsp;
-    <div class="border-top pt-2">
-        <small class="text-muted">
-            Already Have An Account Registered? <a class="ml-3" href="{{ url_for ('users.login') }}"> Sign In </a>
-        </small>
-    </div>
 
-
+</div>
 <br>
 
 {% endblock content %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -43,7 +43,7 @@
 					<p class="lead"> We are learning how to build a simple Flask-blog with user registration and blog CRUD functionality.
                         Flask is a micro web framework written in Python.</p>
 					{% if current_user.is_authenticated %}
-					<p class="m-sm-auto p-0"><a class="btn btn-outline-dark" href="{{ url_for('create_post') }}">Create Post</a></p>
+					<p class="m-sm-auto p-0"><a class="btn btn-outline-dark" href="{{ url_for('posts.create_post') }}">Create Post</a></p>
 					{% endif %}
 				</div>
 
@@ -53,9 +53,9 @@
                 {% if posts %}
 				{% for post in posts.items %}  <!-- Since it is an paginate page -->
 				<div class="blog-post-container">
-					<h5><a href="{{url_for('post', post_id=post.id)}}"> {{ post.title }} </a></h5>
+					<h5><a href="{{url_for('posts.post', post_id=post.id)}}"> {{ post.title }} </a></h5>
 					<p style="font-size: small;" > {{ post.content }}</p>
-					<p style="font-size: small;"> by <a href="{{ url_for('user_posts', username=post.author.username) }}"> {{ post.author.username }} </a> <img height="20px" width="20px" class="rounded-circle" src="{{ url_for('static', filename='images/'+ post.author.image_file) }}" alt="..."> on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+					<p style="font-size: small;"> by <a href="{{ url_for('users.user_posts', username=post.author.username) }}"> {{ post.author.username }} </a> <img height="20px" width="20px" class="rounded-circle" src="{{ url_for('static', filename='images/'+ post.author.image_file) }}" alt="..."> on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
 
 				</div>
 				{% endfor %}
@@ -63,9 +63,9 @@
 				{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
 					{% if page_num %}
 						{% if posts.page == page_num %}
-					<a class="btn btn-dark mb-4" href="{{ url_for('home', page=page_num) }}"> {{ page_num }}</a>
+					<a class="btn btn-dark mb-4" href="{{ url_for('main.home', page=page_num) }}"> {{ page_num }}</a>
 						{% else %}
-					<a class="btn btn-outline-dark mb-4" href="{{ url_for('home', page=page_num) }}"> {{ page_num }}</a>
+					<a class="btn btn-outline-dark mb-4" href="{{ url_for('main.home', page=page_num) }}"> {{ page_num }}</a>
 					{% endif %}
 
 

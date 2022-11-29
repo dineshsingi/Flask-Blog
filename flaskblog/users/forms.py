@@ -1,12 +1,10 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed
+from flask_wtf.file import FileField,FileAllowed
+from wtforms import StringField, PasswordField,SubmitField, BooleanField
+from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from .models import User, BlogPost
+from flaskblog.models import User
 
-
-# Set as a Secret User for this application forms
 
 # Accounts Related Started
 # Registration Form
@@ -28,6 +26,7 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError("Email Already Exists..!!")
+
 
 # Login Form
 class LoginForm(FlaskForm):
@@ -74,50 +73,3 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
 
     submit  = SubmitField('Rest Password')
-
-# Accounts related Ended
-
-# Creating forms for BlogPost
-
-class CreatePostForm(FlaskForm):
-    title               = StringField('Title', validators=[DataRequired(), Length(min=2, max=120)])
-    content             = TextAreaField('Content', validators=[DataRequired()])
-
-    submit              = SubmitField('Post')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

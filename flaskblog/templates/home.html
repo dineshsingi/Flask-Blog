@@ -46,12 +46,12 @@
 				<div class="blog-post-container">
 					<h5><a href="{{url_for('posts.post', post_id=post.id)}}"> {{ post.title }} </a></h5>
 					<p style="font-size: small;" > {{ post.content }}</p>
-<<<<<<< HEAD
+
 					<p style="font-size: small;"> by <a href="{{ url_for('users.user_posts', username=post.author.username) }}"> {{ post.author.username }} </a> <img height="20px" width="20px" class="rounded-circle" src="{{ url_for('static', filename='images/'+ post.author.image_file) }}" alt="..."> on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
 
-=======
-					<p style="font-size: small;"> by <a href="{{ url_for('user_posts', username=post.author.username) }}"> {{ post.author.username }} </a> <img height="20px" width="20px" class="rounded-circle" src="{{ url_for('static', filename='images/'+ post.author.image_file) }}" alt="..."> on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
->>>>>>> 70db4bb516a8811f2f29df9daf89363023c16fe5
+
+
+
 				</div>
 				{% endfor %}
 

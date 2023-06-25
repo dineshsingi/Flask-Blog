@@ -19,8 +19,8 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    app.config['SECRET_KEY'] = '26eea4085b5ca875a5'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
+    # app.config['SECRET_KEY'] = '26eea4085b5ca875a5'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
 
     db.init_app(app)
     bcrypt.init_app(app)
